@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 import { Todo } from './todos/interfaces';
 import { Add, Remove, Toggle } from './todos/actions';
 import { Observable } from 'rxjs';
+import { TodosState } from './todos/reducer'
 
 
 @Component({
@@ -13,8 +14,8 @@ import { Observable } from 'rxjs';
 export class AppComponent {
   todos$: Observable<Todo[]>;
   newTodoText: string = "";
-  constructor(private store: Store<{ todoState: Array<Todo> }>) {
-    this.todos$ = store.select(state => state.todoState);
+  constructor(private store: Store<TodosState>) {
+    this.todos$ = store.select(state => state.todos);
   }
   addTodo() {
     this.store.dispatch(Add({ text: this.newTodoText || 'Untitled task' }));

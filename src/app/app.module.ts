@@ -10,7 +10,7 @@ import { todoReducer } from './todos/reducer';
     BrowserModule,
     FormsModule,
     StoreModule.forRoot({
-      todoState: todoReducer
+      todo: todoReducer
     })
   ],
   declarations: [AppComponent],
